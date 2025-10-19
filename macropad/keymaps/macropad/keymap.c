@@ -30,7 +30,7 @@ void keyboard_post_init_user(void) {
 #endif
 }
 
-enum custom_keycodes { EMOJI_FIRE = SAFE_RANGE, EMOJI_PLEAD, EMOJI_JOY, EMOJI_100, EMOJI_TEAR, EMOJI_UPSIDE, EMOJI_SOB, EMOJI_DROOL, EMOJI_SKULL, EMOJI_NERD, EMOJI_DISAPPOINT, EMOJI_FLUSH };
+enum custom_keycodes { EMOJI_FIRE, EMOJI_PLEAD, EMOJI_JOY, EMOJI_100, EMOJI_TEAR, EMOJI_UPSIDE, EMOJI_SOB, EMOJI_DROOL, EMOJI_SKULL, EMOJI_NERD, EMOJI_DISAPPOINT, EMOJI_FLUSH };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(_______, EMOJI_FIRE, EMOJI_PLEAD, EMOJI_JOY, EMOJI_100, EMOJI_TEAR, EMOJI_UPSIDE, EMOJI_SOB, EMOJI_DROOL, EMOJI_SKULL, EMOJI_NERD, EMOJI_DISAPPOINT, EMOJI_FLUSH),
@@ -138,9 +138,9 @@ bool oled_task_user(void) {
     oled_set_cursor(0, 5);
     oled_write("Volume:", false);
 
-    // Draw numeric volume
+    oled_write(" ", false); 
     char buf[8];
-    snprintf(buf, sizeof(buf), "%d", encoder_position);
+    snprintf(buf, sizeof(buf), "%3d", encoder_position); 
     oled_write(buf, false);
 
     oled_set_cursor(0, 6);
